@@ -1,0 +1,100 @@
+public class linkedList {
+  node head=null;
+  void add(int data){
+	  head = new node(data);
+  }
+  void Atlast(int data){
+	  node temp = head;
+	  node newnode= new node(data);
+	  
+	  if(head == null){
+		  head = newnode;
+	  }
+	  else{
+		  while(temp.next!= null){
+			  temp = temp.next;
+		  }
+		  temp.next = newnode;
+	  }
+  }
+  void atfront(int data){
+	  node newnode = new node(data);
+	  newnode.next = head;
+	  head = newnode;
+  }
+  void atpoint(int data,int point){
+	  node newnode = new node(data);
+	  node temp = head;
+	  while(temp.data !=point){
+		  temp = temp.next;
+	  }
+	  newnode.next = temp.next;
+	  temp.next = newnode;
+	  
+  }
+  void delAtBegin(){
+	  node temp = head;
+	  if(temp.next == null){
+		  head = null;
+	  }
+	  else{
+		  head = temp.next;
+	  }
+  }
+  void delAtLast(){
+	  node temp = head;
+	  while(temp.next.next!=null){
+		  temp = temp.next;
+	  }
+	  temp = null;
+  }
+  void delPoint(int data){
+	  node temp = head;
+	  if(temp.next == null && temp.data == data){
+		  head = null;
+	  }
+	  else{
+		  while(temp.next.data!=data){
+			  temp = temp.next;
+		  }
+		  if(temp.next == null){
+			  System.out.println("No such element in list");
+		  }
+		  else{
+		  temp.next = temp.next.next;
+		  }
+	  }
+  }
+  void print(){
+	  if(head == null){
+		  System.out.println("List is empty");
+	  }
+	  else{
+		  node temp = head;
+		  while(temp!= null){
+			 System.out.print(temp.data+ " ");
+			 temp = temp.next;
+		  }
+	  }
+	  System.out.println();
+  }
+  public static void main(String args[]){
+	  linkedList l = new linkedList();
+	  l.add(10);
+	  l.Atlast(20);
+	  l.Atlast(30);
+	  l.Atlast(60);
+	  l.print();
+	  l.delPoint(30);
+	  l.print();
+  }
+  
+}
+class node{
+	int data;
+	node next;
+	node(int data){
+		this.data = data;
+		this.next = null;
+	}
+}
